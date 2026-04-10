@@ -71,10 +71,10 @@ private theorem mid_lt_size {a : Array Nat} {lo hi : Nat}
 theorem bsearchAux_sound (a : Array Nat) (target : Nat) :
     ∀ lo hi : Nat, hi < a.size →
     ∀ i, bsearchAux a target lo hi = some i → i < a.size ∧ a[i]! = target := by
-  intro lo hi
+  intro lo hi hbound
   induction fuel : hi + 1 - lo using Nat.strongRecOn generalizing lo hi with
   | ind fuel ih =>
-  intro hbound i hres
+  intro i hres
   by_cases hle : lo ≤ hi
   · rw [bsearchAux_of_le _ _ _ _ hle] at hres
     have hmid_lt : lo + (hi - lo) / 2 < a.size := mid_lt_size hle hbound
