@@ -1,0 +1,10 @@
+name = "binsearch"
+version = "0.1.0"
+defaultTargets = ["binsearch"]
+
+[[lean_lib]]
+name = "Binsearch"
+
+[[lean_exe]]
+name = "binsearch"
+root = "Main"
